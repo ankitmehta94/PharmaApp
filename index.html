@@ -1,0 +1,38 @@
+<html ng-app="PhStore">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Pharma Store</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+
+</head>
+<body ng-controller="StoreController as Store">
+<header>
+  <h1 class="text-center">Pharma Medicines</h1>
+  <h2 class="text-center">A Store Made using Angular</h2>
+</header>
+<div class="list-group">
+    <div class="list-group-item" ng-repeat="product in store.products">
+        <h3>{{product.name}}<em class="pull-right">{{product.price | currency}}</em></h3>
+        <div ng-controller="GalleryController as gallery" ng-show="product.images.length">
+            <div class="img-wrap">
+                <img ng-src="{{product.images[gallery.current]}}"/>
+            </div>
+            <ul class="img-thumbnail clearfix">
+                <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
+                    <img ng-src="{{image}}"/>
+                </li>
+            </ul>
+        </div>
+        <section ng-controller=""
+    </div>
+</div>
+<script src="angular-min.js"></script>
+<script src="app.js"></script>
+
+
+</body>
+</html>
