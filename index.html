@@ -1,38 +1,52 @@
-<html ng-app="PhStore">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>The Pharma Store</title>
+  <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
 
 </head>
-<body ng-controller="StoreController as Store">
-<header>
-  <h1 class="text-center">Pharma Medicines</h1>
-  <h2 class="text-center">A Store Made using Angular</h2>
-</header>
-<div class="list-group">
+<body>
+<div ng-view>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <header>
+    <h1 class="text-center">Pharma Medicines</h1>
+    <h2 class="text-center">A Store Made using Angular</h2>
+  </header>
+  <!--  Products Container  -->
+  <div class="list-group">
+    <!--  Product Container  -->
     <div class="list-group-item" ng-repeat="product in store.products">
-        <h3>{{product.name}}<em class="pull-right">{{product.price | currency}}</em></h3>
-        <div ng-controller="GalleryController as gallery" ng-show="product.images.length">
-            <div class="img-wrap">
-                <img ng-src="{{product.images[gallery.current]}}"/>
-            </div>
-            <ul class="img-thumbnail clearfix">
-                <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
-                    <img ng-src="{{image}}"/>
-                </li>
-            </ul>
-        </div>
-        <section ng-controller=""
+      <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
+
+      <!-- Image Gallery  -->
+      <product-gallery></product-gallery>
+
+      <!-- Product Tabs  -->
+      <product-tabs></product-tabs>
     </div>
+  </div>
 </div>
-<script src="angular-min.js"></script>
-<script src="app.js"></script>
-
-
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   crossorigin="anonymous"></script>
+  <script  type="text/javascript" src="js/angular-min.js"></script>
+  <script  type="text/javascript" src="js/angular-route-min.js"></script>
+  <script  type="text/javascript" src="js/app.js"></script>
+  <script  type="text/javascript" src="js/route.js"></script>
+  <script  type="text/javascript" src="js/products.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
 </body>
 </html>

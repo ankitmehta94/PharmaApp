@@ -2,7 +2,7 @@
  * Created by ankit94 on 03-05-2016.
  */
 (function(){
-   var app= angular.module('store-directives',[]);
+   var app= angular.module('store-directives',['ngRoute']);
     app.directive("productDescription", function(){
         return{
             restrict:'E',
